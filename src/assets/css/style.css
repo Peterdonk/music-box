@@ -1,0 +1,56 @@
+/*
+Theme Name:         Etrostore
+Theme URI:          http://wp.smartaddons.com/themes/sw_etrostore/
+Description:        Etrostore is an unique and modern WooCommerce WordPress theme built with Bootstrap and powered by Visual Composer. It's suitable for any technology store.
+Author:             magentech
+Author URI:         http://www.themeforest.net/user/magentech
+Version:            1.0.0
+License:            GNU General Public License v2 or later
+Text Domain:		etrostore
+*/
+
+
+.wp-caption {
+	margin-bottom: 1.75em;
+	max-width: 100%;
+}
+
+.wp-caption img[class*="wp-image-"] {
+	display: block;
+	margin: 0;
+}
+
+.wp-caption .wp-caption-text {
+	color: #686868;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	line-height: 1.6153846154;
+	padding-top: 0.5384615385em;
+}
+
+.bypostauthor > article .fn:after {
+	content: "\f304";
+	left: 3px;
+	position: relative;
+	top: 5px;
+}
+
+.gallery-caption {
+	color: #686868;
+	display: block;
+	font-size: 13px;
+	font-size: 0.8125rem;
+	font-style: italic;
+	line-height: 1.6153846154;
+	padding-top: 0.5384615385em;
+}
+
+/*
+License URI: http://www.gnu.org/licenses/gpl-2.0.html
+Tags: rtl-language-support, sticky-post, two-columns
+Text Domain: etrostore
+
+This theme, like WordPress, is licensed under the GPL.
+Use it to make something cool, have fun, and share what you've learned with others.
+*/
