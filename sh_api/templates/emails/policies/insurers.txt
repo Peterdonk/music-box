@@ -1,8 +1,0 @@
-Policy sold!
-
-A BestQuote user just purchased a policy.
-
-Hi {{ company_name }},
-
-Find attached information pertaining to the purchase.
-
