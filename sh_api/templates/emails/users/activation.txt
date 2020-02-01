@@ -1,0 +1,19 @@
+Welcome to BestQuote
+
+We're here to help you find the best insurance policy to meet your needs.
+
+Just one more step..
+
+
+
+Hi {{ user.first_name }},
+
+Thank you for signing up for BestQuote. We are very excited to help you change the way you buy insurance.
+Click on the link below to verify your BestQuote account.
+
+{{ activation_url }}
+
+
+Regards
+
+The BestQuote Team

@@ -1,0 +1,7 @@
+Would you like to complete your purchase?
+
+Hi {{ user.first_name }},
+
+You're seeing this email because a while back you began the process of purchasing an insurance policy with BestQuote. Please click on the link below to continue your purchase:
+
+{{ }}

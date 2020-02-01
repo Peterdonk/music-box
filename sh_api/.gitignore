@@ -1,0 +1,16 @@
+db.sqlite3
+__pycache__
+
+venv
+venv/
+
+staticfiles/
+staticfiles
+
+.vscode
+.vscode/
+
+.idea
+.idea/
+documents/
+documents

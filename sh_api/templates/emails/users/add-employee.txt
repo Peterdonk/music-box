@@ -1,0 +1,11 @@
+Hi {{ employee.first_name }},
+
+You've been invited to join {{ employee.branch.company.name }}'s Bestquote account.
+Click on the button below to join {{ employee.branch.company.name }}'s BestQuote account.
+
+{{ activation_url }}
+
+
+Regards
+
+The BestQuote Team

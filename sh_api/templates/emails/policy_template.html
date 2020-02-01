@@ -1,0 +1,299 @@
+{% load humanize %}
+{% load policies %}
+<html>
+<head>
+  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+  <style>
+    .col-lg-1, .col-lg-10, .col-lg-11, .col-lg-12, .col-lg-2, .col-lg-3, .col-lg-4, .col-lg-5, .col-lg-6, .col-lg-7, .col-lg-8, .col-lg-9, .col-md-1, .col-md-10, .col-md-11, .col-md-12, .col-md-2, .col-md-3, .col-md-4, .col-md-5, .col-md-6, .col-md-7, .col-md-8, .col-md-9, .col-sm-1, .col-sm-10, .col-sm-11, .col-sm-12, .col-sm-2, .col-sm-3, .col-sm-4, .col-sm-5, .col-sm-6, .col-sm-7, .col-sm-8, .col-sm-9, .col-xs-1, .col-xs-10, .col-xs-11, .col-xs-12, .col-xs-2, .col-xs-3, .col-xs-4, .col-xs-5, .col-xs-6, .col-xs-7, .col-xs-8, .col-xs-9 {
+      padding-right: 5px;
+      padding-left: 5px;
+    }
+
+    body {
+      font-size: 8pt;
+    }
+
+    p {
+      margin-bottom: 0;
+      margin-top: 0;
+    }
+
+    .row {
+      margin-left: -5px;
+      margin-right: -5px;
+    }
+    .boxed {
+      border: 1px solid black;
+    }
+
+    .spaced {
+      padding: 5px 8px;
+    }
+
+    .bold {
+      font-weight: bold;
+    }
+
+    .separator {
+      height: 15px;
+    }
+
+    .smaller-text {
+      font-size: 7pt;
+    }
+
+    .smallest-text {
+      font-size: 6pt;
+    }
+
+    .paragraphed {
+      padding-left: 20px;
+      margin-top: 5px;
+    }
+
+    .underlined {
+      text-decoration: underline;
+    }
+
+    .page-break{
+      page-break-after: always;
+    }
+
+  </style>
+</head>
+<body>
+<div class="row">
+  <div class="col-xs-8">
+    <h4 class="bold text-center">TRAVEL INSURANCE POLICY</h4>
+  </div>
+  <div class="col-xs-4 text-right">
+    <img src="{{ policy.product.company.logo_url }}" alt="Insurer Logo">
+  </div>
+</div>
+<div class="row">
+  <div class="col-xs-8">
+    <div class="boxed spaced" style="height: 100px">
+      {% if is_family %}
+      <div class="row">
+          <div class="col-xs-3">Name of Policyholder: </div>
+          <div class="col-xs-7">{{ policy.main_client.get_full_name }}</div>
+        </div>
+         <div class="row">
+          <div class="col-xs-3">Date of Birth: </div>
+          <div class="col-xs-7">{{ policy.main_client.date_of_birth }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Passport: </div>
+          <div class="col-xs-7">{{ policy.main_client.passport_number }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Phone Num: </div>
+          <div class="col-xs-7">{{ policy.main_client.phone_number }}</div>
+        </div>
+      {% else %}
+      <div class="row">
+          <div class="col-xs-3">Name of Policyholder: </div>
+          <div class="col-xs-7">{{ client_data.client.get_full_name }}</div>
+        </div>
+         <div class="row">
+          <div class="col-xs-3">Date of Birth: </div>
+          <div class="col-xs-7">{{ client_data.client.date_of_birth }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Passport: </div>
+          <div class="col-xs-7">{{ client_data.client.passport_number }}</div>
+        </div>
+        <div class="row">
+          <div class="col-xs-3">Phone Num: </div>
+          <div class="col-xs-7">{{ client_data.client.phone_number }}</div>
+        </div>
+      {% endif %}
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="boxed" style="height: 100px">
+      <div class="row">
+          <div class="spaced" style="height: 69px">
+            <div class="row">
+                <div class="col-xs-6">Policy Number: </div>
+                <div class="col-xs-6">{{ policy.number }}</div>
+            </div>
+            {% if is_family %}
+            <div class="row">
+                <div class="col-xs-6">Number of Travellers: </div>
+                <div class="col-xs-6">{{ policy.clients.count }}</div>
+            </div>
+            {% endif %}
+            <div class="row">
+                <div class="col-xs-6">Product: </div>
+                <div class="col-xs-6">{{ policy.product.name }}</div>
+            </div>
+          </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+{% if is_family %}
+{% for client in clients %}
+<div class="row">
+    <div class="col-xs-8">
+        <div class="boxed spaced" style="height: 90px; margin-bottom: 10px;">
+          <div class="row">
+            <div class="col-xs-3">Name of Policyholder: </div>
+            <div class="col-xs-7">{{ client.get_full_name }}</div>
+          </div>
+           <div class="row">
+            <div class="col-xs-3">Date of Birth: </div>
+            <div class="col-xs-7">{{ client.date_of_birth }}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">Passport: </div>
+            <div class="col-xs-7">{{ client.passport_number }}</div>
+          </div>
+          <div class="row">
+            <div class="col-xs-3">Phone Num: </div>
+            <div class="col-xs-7">{{ client.phone_number }}</div>
+          </div>
+        </div>
+      </div>
+  </div>
+  {% endfor %}
+  {% endif %}
+<div class="separator"></div>
+
+<div class="row">
+  <div class="col-xs-4">
+    <div class="boxed spaced" style="height: 85px">
+      <p class="bold">Coverage Period</p>
+      <div class="row">
+        <div class="col-xs-6">Effective from:</div>
+        <div class="col-xs-6">{{ policy.start_date }}</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">Expiry:</div>
+        <div class="col-xs-6">{{ policy.end_date }}</div>
+      </div>
+       <div class="row">
+        <div class="col-xs-6">Policy period:</div>
+        <div class="col-xs-6">{{ policy.duration }} day(s)</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="boxed spaced" style="height: 85px">
+      <p>&nbsp;</p>
+      <div class="row">
+        <div class="col-xs-6">Country of Origin:</div>
+        <div class="col-xs-6">Ghana</div>
+      </div>
+      <div class="row">
+        <div class="col-xs-6">City:</div>
+        <div class="col-xs-6"></div>
+      </div>
+       <div class="row">
+        <div class="col-xs-6">Destination:</div>
+        <div class="col-xs-6">{{ policy.destination_address }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="col-xs-4">
+    <div class="boxed spaced" style="height: 85px">
+      <p class="bold">Policy Amount</p>
+      <div class="row">
+        <div class="col-xs-6">Premium due:</div>
+        {% if is_family %}
+        <div class="col-xs-6">{{ policy.premium.currency.code }} {{ policy.premium.amount | floatformat:2 | intcomma }}</div>
+        {% else %}
+        <div class="col-xs-6">{{ policy.premium.currency.code }} {{ client_data.client_premium.premium | floatformat:2 | intcomma }}</div>
+        {% endif %}
+      </div>
+      <div>&nbsp;</div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="boxed spaced">
+      <p class="bold text-center">Cover Table / Schedule of Covers</p>
+      <div class="smaller-text" style="text-transform: uppercase; height: 250px;">
+        {% for breakdown in policy.product.travel_info.travel_cover_breakdown_set.all %}
+          <div class="row">
+            <div class="col-xs-7">
+              {{ breakdown.name }}
+            </div>
+            <div class="col-xs-4">
+              {{ breakdown.value }}
+            </div>
+          </div>
+        {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="boxed spaced text-center" style="height: 130px">
+      <p class="bold">Assistance Information</p>
+      <div class="smallest-text">
+        {{ policy.product.company.product_info.assistance_info | safe  }}
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="row">
+  <div class="col-xs-12">
+    <div class="boxed spaced" style="height: 60px">
+      <p class="smallest-text">
+        By signing this document, the Policyholder expressly accepts the clauses limiting the rights of the Insured included in the attached General Conditions of the Policy
+      </p>
+      <div class="row">
+        <div class="col-xs-4">
+          <p class="bold underlined">POLICYHOLDER</p>
+        </div>
+        <div class="col-xs-4">
+          <p class="bold underlined">{{ policy.paid_on.date }}</p>
+        </div>
+        <div class="col-xs-4">
+          <p class="bold underlined">{{ policy.product.company.name }}</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="row">
+  <!-- <div class="col-xs-6">
+    <img style="height: 60px" src="https://s3.amazonaws.com/my-bestquote-prod/static/images/b0.png" alt="">
+  </div> -->
+  <div class="col-xs-6 col-xs-offset-6 text-right">
+    <img style="height: 40px" src="https://bestquote-stage.s3.us-east-2.amazonaws.com/static/logo.png" alt="">
+  </div>
+</div>
+
+<div class="separator"></div>
+
+<div class="row text-center">
+    <p class="smallest-text">The Policyholder expressly accepts the clauses limiting the rights of the Insured Included in the attached General Conditions of the Policy
+</p>
+
+<div class="separator"></div>
+
+</div>
+
+<div class="page-break"></div>
+
+</body>
+</html>

@@ -1,0 +1,33 @@
+{% extends 'emails/base.html' %}
+
+{% block title %}
+  <h3 style="color: #13d1cf;">New Contact Message</h3>
+{% endblock %}
+
+{% block page_title %}
+New Contact Message
+{% endblock %}
+
+
+{% block content %}
+  <p>Hi,</p>
+
+  <p>
+    You have a new message from {{ contact.name }}
+  </p>
+  <br><br>
+
+  <p>
+    Name: {{ contact.name }} <br>
+    Email: {{ contact.email }} <br><br><br>
+
+    Message: {{ contact.message }}
+  </p>
+
+{% endblock content %}
+
+{% block footer %}
+  <p>
+    This email was sent to {{ contact.email }}.
+  </p>
+{% endblock %}
