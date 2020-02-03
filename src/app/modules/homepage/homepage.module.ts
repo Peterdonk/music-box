@@ -14,15 +14,20 @@ import { InstrumentCategoriesModule } from "./instrument-categories/instrument-c
 
 const routes: Routes = [
   {
-    path: "",
+    path: " ",
     component: LandingPageComponent
   },
   {
-    path: "categories",
+    path: "drummer",
     loadChildren: () =>
       import("./instrument-categories/instrument-categories.module").then(
         m => m.InstrumentCategoriesModule
       )
+  },
+  {
+    path: "**",
+    redirectTo: "home",
+    pathMatch: "full"
   }
 ];
 

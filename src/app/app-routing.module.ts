@@ -4,18 +4,19 @@ import { Routes, RouterModule } from "@angular/router";
 
 const routes: Routes = [
   {
-    path: "",
+    path: "home",
     loadChildren: () =>
-      import("../app/modules/homepage/homepage.module").then(
-        m => m.HomepageModule
-      )
+      import("./modules/homepage/homepage.module").then(m => m.HomepageModule)
   },
   {
-    path: "category",
+    path: "home/category",
     loadChildren: () =>
-      import("../app/modules/homepage/homepage.module").then(
-        m => m.HomepageModule
-      )
+      import("./modules/homepage/homepage.module").then(m => m.HomepageModule)
+  },
+  {
+    path: "",
+    redirectTo: "home",
+    pathMatch: "full"
   }
 ];
 
@@ -24,4 +25,4 @@ const routes: Routes = [
   declarations: [],
   exports: [RouterModule]
 })
-export class HomeRoutingModule {}
+export class AppRoutingModule {}

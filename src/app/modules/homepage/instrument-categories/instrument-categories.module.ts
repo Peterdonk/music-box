@@ -10,19 +10,26 @@ import { SaxophonistComponent } from "./saxophonist/saxophonist.component";
 import { SoundEngineerComponent } from "./sound-engineer/sound-engineer.component";
 import { TrumpeterComponent } from "./trumpeter/trumpeter.component";
 import { BassGuitaristComponent } from "./bass-guitarist/bass-guitarist.component";
+import { InstrumentCategoriesComponent } from "./instrument-categories.component";
 
 const routes: Routes = [
   {
-    path: "painost",
-    component: DrummerComponent
-  },
-  {
-    path: "drummer",
-    component: DrummerComponent
-  },
-  {
-    path: "keyboardist",
-    component: KeyboardistComponent
+    path: "",
+    component: InstrumentCategoriesComponent,
+    children: [
+      {
+        path: "painost",
+        component: DrummerComponent
+      },
+      {
+        path: "drummer",
+        component: DrummerComponent
+      },
+      {
+        path: "keyboardist",
+        component: KeyboardistComponent
+      }
+    ]
   }
 ];
 
